@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import es.santander.ascender.ejercicio005.model.Persona;
 import es.santander.ascender.ejercicio005.model.Provincia;
 import es.santander.ascender.ejercicio005.service.ProvinciaService;
 
@@ -46,4 +48,11 @@ public class ProvinciaController {
     public void delete(@PathVariable("id") Long id) {
         provinciaService.delete(id);
     }
+
+
+    @GetMapping("/buscar/nombre")
+    public List<Provincia> buscarPorNombre(@RequestParam String nombre) {
+        return provinciaService.buscarPorNombre(nombre);
+    }
+
 }

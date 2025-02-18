@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import es.santander.ascender.ejercicio005.model.Persona;
@@ -46,4 +47,30 @@ public class PersonaController {
     public void delete(@PathVariable("id") Long id) {
         personaService.delete(id);
     }
+
+    @GetMapping("/buscar/nombre")
+    public List<Persona> findByNombre(@RequestParam String nombre) {
+        return personaService.buscarPorNombre(nombre);
+    }
+
+    @GetMapping("/buscar/nombre/filtro")
+    public List<Persona> buscarPorPersonaFiltro(@RequestParam String nombre) {
+        return personaService.buscarPorApellidoFiltrado(nombre);
+    }
+
+    @GetMapping("/buscar/apellido")
+    public List<Persona> buscarPorNombre(@RequestParam String apellido) {
+        return personaService.buscarPorApellido(apellido);
+    }
+
+    @GetMapping("/buscar/apellido/filtro")
+    public List<Persona> buscarPorNombreFiltrado(@RequestParam String apellido) {
+        return personaService.buscarPorApellidoFiltrado(apellido);
+    }
+
+    @GetMapping("/buscar/provincia")
+    public List<Persona> buscarPorProvincia(@RequestParam Long provinciaID) {
+        return personaService.buscarPorProvincia(provinciaID);
+    }
+    
 }

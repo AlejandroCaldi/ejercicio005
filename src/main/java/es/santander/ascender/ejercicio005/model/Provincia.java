@@ -5,7 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -15,8 +14,8 @@ public class Provincia {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotBlank
-    @NotNull
+    @NotBlank(message = "El nombre de la provincia no puede ser vacío")
+    @NotNull(message = "El nombre de la provincia no puede ser nulo")
     @Column(name="nombre")
     private String nombre;
 

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import es.santander.ascender.ejercicio005.model.Persona;
 import es.santander.ascender.ejercicio005.model.Provincia;
 import es.santander.ascender.ejercicio005.repository.ProvinciaRepository;
 
@@ -45,4 +46,13 @@ public class ProvinciaService {
         repository.deleteById(id);
         return;
     }
+
+    public List<Provincia> buscarPorNombre(String nombre) {
+        return repository.findByNombre(nombre);
+    }
+
+    public List<Provincia> buscarPorNombreFiltro(String nombre) {
+        return repository.findByNombreContainingIgnoreCase(nombre);
+    }
+
 }

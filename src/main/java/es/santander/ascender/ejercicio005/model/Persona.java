@@ -14,17 +14,17 @@ public class Persona {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotBlank
-    @NotNull
+    @NotBlank(message = "El nombre de la persona no puede ser vacío")
+    @NotNull(message = "El nombre de la persona no puede ser nulo")
     @Column(name="nombre")
     private String nombre; 
 
-    @NotBlank
-    @NotNull
+    @NotBlank(message= "El apellido de la persona no puede ser vacío")
+    @NotNull(message="El apellido de la persona no puede ser vacío")
     @Column(name="apellido")
     private Boolean apellido;
 
-    @NotNull
+    @NotNull(message="El id de la provincia no puede ser nulo, a ser referenciado por clave foreánea")
     @Column(name="nombre", unique = true, nullable = false) // asumimos que no habrìa dos lapiceras con el mismo nombre. 
     private Long provincia_Id;
 
