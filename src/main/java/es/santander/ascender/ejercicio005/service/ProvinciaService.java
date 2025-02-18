@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import es.santander.ascender.ejercicio005.model.Persona;
 import es.santander.ascender.ejercicio005.model.Provincia;
 import es.santander.ascender.ejercicio005.repository.ProvinciaRepository;
 
