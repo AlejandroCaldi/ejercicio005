@@ -1,4 +1,4 @@
-package es.santander.ascedender.ejercicio005;
+package es.santander.ascender.ejercicio005;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
