@@ -9,32 +9,31 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
-public class Provincia {
+public class Pais {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotBlank(message = "El nombre del provincia no puede ser vacío")
-    @NotNull(message = "El nombre del provincia no puede ser nulo")
+    @NotBlank(message = "El nombre de la pais no puede ser vacío")
+    @NotNull(message = "El nombre de la pais no puede ser nulo")
     @Column(name="nombre", unique = true)
     private String nombre;
 
-    @NotBlank(message = "El nukero del paisId no puede ser vacío")
-    @NotNull(message = "El nombre del paisId no puede ser nulo")
-    @Column(name="paisId", unique = true)
-    private Long paisId;
+
+    @NotBlank(message = "El id de Continente no puede ser vacío")
+    @NotNull(message = "El id de continente no puede ser nulo")
+    @Column(name="continenteId", unique = true)
+    private String continenteID;
 
 
-
-    public Provincia() {
+    public Pais() {
         
     }
 
 
-    public Provincia(Long id, @NotBlank @NotNull String nombre, Long paisId) {
+    public Pais(Long id, @NotBlank @NotNull String nombre) {
         this.id = id;
         this.nombre = nombre;
-        this.paisId = paisId;
     }
 
 
@@ -55,17 +54,6 @@ public class Provincia {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-
-    public Long getPaisId() {
-        return paisId;
-    }
-
-
-    public void setPaisId(Long paisId) {
-        this.paisId = paisId;
     };
-    
     
 }

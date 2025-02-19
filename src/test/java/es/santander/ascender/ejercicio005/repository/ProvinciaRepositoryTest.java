@@ -17,11 +17,13 @@ public class ProvinciaRepositoryTest {
     @Autowired
     private ProvinciaRepository repository;
 
+
     @Test
     public void testCreate() {
+
         Provincia provincia = new Provincia();
         provincia.setNombre("Cantabria");
-
+        provincia.setPaisId(1l);
         repository.save(provincia);
 
         assertTrue(
