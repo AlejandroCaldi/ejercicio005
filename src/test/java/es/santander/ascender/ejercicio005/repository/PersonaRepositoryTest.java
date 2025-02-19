@@ -52,7 +52,7 @@ public class PersonaRepositoryTest {
     @Test
     public void view() {
 
-        String nombre = "Alejandro";
+        String nombre = "John";
         Persona persona = new Persona();
         persona.setNombre(nombre);
         persona.setApellido("Balls");
@@ -68,7 +68,7 @@ public class PersonaRepositoryTest {
     @Test
     public void update() {
 
-        String apellidoOriginal = "Caldi";
+        String apellidoOriginal = "Pelotas";
         String apellidoNuevo = "Gomez";
         Persona persona = new Persona();
         persona.setNombre("Sebastián");
