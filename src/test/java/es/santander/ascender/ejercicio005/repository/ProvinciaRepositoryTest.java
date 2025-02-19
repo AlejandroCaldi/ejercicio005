@@ -62,7 +62,7 @@ public class ProvinciaRepositoryTest {
     @Test
     public void update() {
 
-        String provinciaNuevo = "Gomez";
+        String provinciaNuevo = "Asturias";
         Provincia provincia = new Provincia();
         provincia.setNombre("Canarias");
         repository.save(provincia);
