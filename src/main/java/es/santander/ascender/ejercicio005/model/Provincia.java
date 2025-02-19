@@ -16,7 +16,7 @@ public class Provincia {
 
     @NotBlank(message = "El nombre de la provincia no puede ser vacío")
     @NotNull(message = "El nombre de la provincia no puede ser nulo")
-    @Column(name="nombre")
+    @Column(name="nombre", unique = true)
     private String nombre;
 
 
