@@ -19,9 +19,8 @@ public class Provincia {
     @Column(name="nombre", unique = true)
     private String nombre;
 
-    @NotBlank(message = "El nukero del paisId no puede ser vacío")
     @NotNull(message = "El nombre del paisId no puede ser nulo")
-    @Column(name="paisId", unique = true)
+    @Column(name="paisId")
     private Long paisId;
 
 
@@ -31,8 +30,7 @@ public class Provincia {
     }
 
 
-    public Provincia(Long id, @NotBlank @NotNull String nombre, Long paisId) {
-        this.id = id;
+    public Provincia(@NotBlank @NotNull String nombre, Long paisId) {
         this.nombre = nombre;
         this.paisId = paisId;
     }

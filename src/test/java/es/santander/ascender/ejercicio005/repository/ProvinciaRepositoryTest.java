@@ -38,6 +38,7 @@ public class ProvinciaRepositoryTest {
 
         Provincia provincia = new Provincia();
         provincia.setNombre("Barcelona");
+        provincia.setPaisId(2l);
         repository.save(provincia);
 
         assertTrue(repository.existsById(provincia.getId()));
@@ -53,6 +54,7 @@ public class ProvinciaRepositoryTest {
         String nombre = "Navarra";
         Provincia provincia = new Provincia();
         provincia.setNombre(nombre);
+        provincia.setPaisId(1l);
         repository.save(provincia);
 
         Optional<Provincia> registro = repository.findById(provincia.getId());
@@ -67,6 +69,7 @@ public class ProvinciaRepositoryTest {
         String provinciaNuevo = "Asturias";
         Provincia provincia = new Provincia();
         provincia.setNombre("Canarias");
+        provincia.setPaisId(2l);
         repository.save(provincia);
 
         assertTrue(repository.existsById(provincia.getId()));

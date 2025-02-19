@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -20,10 +21,10 @@ public class Pais {
     private String nombre;
 
 
-    @NotBlank(message = "El id de Continente no puede ser vacío")
     @NotNull(message = "El id de continente no puede ser nulo")
-    @Column(name="continenteId", unique = true)
-    private String continenteID;
+    @Column(name="continenteId")
+    @Max(6)
+    private Short continenteId;
 
 
     public Pais() {
@@ -31,9 +32,9 @@ public class Pais {
     }
 
 
-    public Pais(Long id, @NotBlank @NotNull String nombre) {
-        this.id = id;
+    public Pais(@NotBlank @NotNull String nombre, Short continenteId) {
         this.nombre = nombre;
+        this.continenteId = continenteId;
     }
 
 
@@ -54,6 +55,17 @@ public class Pais {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+
+    public Short getContinenteId() {
+        return continenteId;
+    }
+
+
+    public void setContinenteId(Short continenteId) {
+        this.continenteId = continenteId;
     };
+    
     
 }

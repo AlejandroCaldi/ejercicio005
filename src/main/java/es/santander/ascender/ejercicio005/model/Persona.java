@@ -31,10 +31,9 @@ public class Persona {
     public Persona(){
     }
 
-    public Persona(Long id, @NotBlank @NotNull String nombre, @NotBlank @NotNull String apellido,
+    public Persona(@NotBlank @NotNull String nombre, @NotBlank @NotNull String apellido,
             @NotNull Long provincia_Id) {
                 
-        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.provincia_Id = provincia_Id;
