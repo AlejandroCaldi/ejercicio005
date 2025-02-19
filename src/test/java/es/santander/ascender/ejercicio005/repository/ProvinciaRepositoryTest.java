@@ -22,67 +22,67 @@ public class ProvinciaRepositoryTest {
     private Provincia establecerProvincia(Short colorR, Short colorG, Short colorB, 
                                           Double peso, Boolean esIntel, short numeroTeclas) {
         
-        Provincia ordenador = new Provincia();
-        ordenador.setColorR(colorR);
-        ordenador.setColorG(colorG);
-        ordenador.setColorB(colorB);
-        ordenador.setPeso(peso);
-        ordenador.setEsIntel(esIntel);
-        ordenador.setNumeroTeclas(numeroTeclas);
+        Provincia provincia = new Provincia();
+        provincia.setColorR(colorR);
+        provincia.setColorG(colorG);
+        provincia.setColorB(colorB);
+        provincia.setPeso(peso);
+        provincia.setEsIntel(esIntel);
+        provincia.setNumeroTeclas(numeroTeclas);
 
-        repository.save(ordenador);
+        repository.save(provincia);
 
-        return ordenador;
+        return provincia;
     }
                                         
     @Test
     public void testCreate() {
-        Provincia ordenador = establecerProvincia((short) 1, (short) 25, (short) 33, 3.1, false, (short) 101);
+        Provincia provincia = establecerProvincia((short) 1, (short) 25, (short) 33, 3.1, false, (short) 101);
         
         assertTrue(
             repository
-                .findById(ordenador.getId())
+                .findById(provincia.getId())
                 .isPresent());
     }
 
     @Test
     public void testCreateFallidoColor() {
         
-        Provincia ordenador = new Provincia();
-        ordenador.setColorR((short)-1);
+        Provincia provincia = new Provincia();
+        provincia.setColorR((short)-1);
         
-        assertThrows(TransactionSystemException.class, () -> repository.save(ordenador));
+        assertThrows(TransactionSystemException.class, () -> repository.save(provincia));
     }
 
     @Test
     public void testCreateFallidoTeclado() {
         
-        Provincia ordenador = new Provincia();
-        ordenador.setNumeroTeclas((short)-1);
+        Provincia provincia = new Provincia();
+        provincia.setNumeroTeclas((short)-1);
         
-        assertThrows(TransactionSystemException.class, () -> repository.save(ordenador));
+        assertThrows(TransactionSystemException.class, () -> repository.save(provincia));
     }
 
     @Test
     public void testCreateFallidoPeso() {
         
-        Provincia ordenador = new Provincia();
-        ordenador.setPeso(-1.04);
+        Provincia provincia = new Provincia();
+        provincia.setPeso(-1.04);
         
-        assertThrows(TransactionSystemException.class, () -> repository.save(ordenador));
+        assertThrows(TransactionSystemException.class, () -> repository.save(provincia));
     }
 
     @Test
     public void delete() {
 
-        Provincia ordenador = establecerProvincia((short) 125, (short) 250, (short) 33, 2.1, true, (short) 99);
+        Provincia provincia = establecerProvincia((short) 125, (short) 250, (short) 33, 2.1, true, (short) 99);
 
-        assertTrue(repository.existsById(ordenador.getId()));
+        assertTrue(repository.existsById(provincia.getId()));
 
         // Borrar registro y comprobar que fue borrado
-        repository.deleteById(ordenador.getId());
+        repository.deleteById(provincia.getId());
 
-        assertFalse(repository.existsById(ordenador.getId()));
+        assertFalse(repository.existsById(provincia.getId()));
     }
 
     @Test
@@ -90,9 +90,9 @@ public class ProvinciaRepositoryTest {
 
         Short colorR = 125;
 
-        Provincia ordenador = establecerProvincia((short) 125, (short) 250, (short) 55, 0.9, true, (short) 99);
+        Provincia provincia = establecerProvincia((short) 125, (short) 250, (short) 55, 0.9, true, (short) 99);
 
-        Optional<Provincia> registro = repository.findById(ordenador.getId());
+        Optional<Provincia> registro = repository.findById(provincia.getId());
 
         assertTrue(registro.isPresent());
         assertTrue(registro.get().getColorR().equals(colorR));
@@ -103,14 +103,14 @@ public class ProvinciaRepositoryTest {
 
         Boolean esIntelOrigial = false;
         Boolean esIntelNuevo = true;
-        Provincia ordenador = establecerProvincia((short) 125, (short) 250, (short) 55, 0.9, esIntelOrigial, (short) 99);
+        Provincia provincia = establecerProvincia((short) 125, (short) 250, (short) 55, 0.9, esIntelOrigial, (short) 99);
 
-        assertTrue(repository.existsById(ordenador.getId()));
+        assertTrue(repository.existsById(provincia.getId()));
 
-        ordenador.setEsIntel(esIntelNuevo);
-        repository.save(ordenador);
+        provincia.setEsIntel(esIntelNuevo);
+        repository.save(provincia);
 
-        Optional<Provincia> updatedProvincia = repository.findById(ordenador.getId());
+        Optional<Provincia> updatedProvincia = repository.findById(provincia.getId());
 
         assertTrue(updatedProvincia.isPresent());
         assertTrue(updatedProvincia.get().getEsIntel().equals(esIntelNuevo));

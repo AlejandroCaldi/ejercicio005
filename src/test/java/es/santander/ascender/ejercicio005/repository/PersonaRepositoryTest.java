@@ -19,18 +19,18 @@ public class PersonaRepositoryTest {
 
     @Test
     public void testCreate() {
-        Persona boligrafo = new Persona();
-        boligrafo.setNombre("La firma de un grande");
-        boligrafo.setColor("##2587f");
-        boligrafo.setEscribe(true);
+        Persona persona = new Persona();
+        persona.setNombre("La firma de un grande");
+        persona.setColor("##2587f");
+        persona.setEscribe(true);
         
 
 
-        repository.save(boligrafo);
+        repository.save(persona);
 
         assertTrue(
             repository
-                .findById(boligrafo.getId())
+                .findById(persona.getId())
                 .isPresent());
     }
 
@@ -38,31 +38,31 @@ public class PersonaRepositoryTest {
     @Test
     public void delete() {
 
-        Persona boligrafo = new Persona();
-        boligrafo.setColor("#0100fe");
-        boligrafo.setEscribe(true);
-        boligrafo.setNombre("Mi primer boli azul");
-        repository.save(boligrafo);
+        Persona persona = new Persona();
+        persona.setColor("#0100fe");
+        persona.setEscribe(true);
+        persona.setNombre("Mi primer boli azul");
+        repository.save(persona);
 
-        assertTrue(repository.existsById(boligrafo.getId()));
+        assertTrue(repository.existsById(persona.getId()));
 
         // Borrar registro y comprobar que fue borrado
-        repository.deleteById(boligrafo.getId());
+        repository.deleteById(persona.getId());
 
-        assertFalse(repository.existsById(boligrafo.getId()));
+        assertFalse(repository.existsById(persona.getId()));
     }
 
     @Test
     public void view() {
 
         String color = "#2f0189";
-        Persona boligrafo = new Persona();
-        boligrafo.setColor(color);
-        boligrafo.setEscribe(true);
-        boligrafo.setNombre("Mi firmador de contratos");
-        repository.save(boligrafo);
+        Persona persona = new Persona();
+        persona.setColor(color);
+        persona.setEscribe(true);
+        persona.setNombre("Mi firmador de contratos");
+        repository.save(persona);
 
-        Optional<Persona> registro = repository.findById(boligrafo.getId());
+        Optional<Persona> registro = repository.findById(persona.getId());
 
         assertTrue(registro.isPresent());
         assertTrue(registro.get().getColor().equals(color));
@@ -73,18 +73,18 @@ public class PersonaRepositoryTest {
 
         String colorOriginal = "#2f0189";
         String colorNuevo = "#de0189";
-        Persona boligrafo = new Persona();
-        boligrafo.setColor(colorOriginal);
-        boligrafo.setEscribe(true);
-        boligrafo.setNombre("Para cartas de amor");
-        repository.save(boligrafo);
+        Persona persona = new Persona();
+        persona.setColor(colorOriginal);
+        persona.setEscribe(true);
+        persona.setNombre("Para cartas de amor");
+        repository.save(persona);
 
-        assertTrue(repository.existsById(boligrafo.getId()));
+        assertTrue(repository.existsById(persona.getId()));
 
-        boligrafo.setColor(colorNuevo);
-        repository.save(boligrafo);
+        persona.setColor(colorNuevo);
+        repository.save(persona);
 
-        Optional<Persona> updatedPersona = repository.findById(boligrafo.getId());
+        Optional<Persona> updatedPersona = repository.findById(persona.getId());
 
         assertTrue(updatedPersona.isPresent());
         assertTrue(updatedPersona.get().getColor().equals(colorNuevo));
