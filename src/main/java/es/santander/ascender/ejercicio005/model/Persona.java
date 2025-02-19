@@ -25,7 +25,7 @@ public class Persona {
     private String apellido;
 
     @NotNull(message="El id de la provincia no puede ser nulo, a ser referenciado por clave foreánea")
-    @Column(name="nombre", unique = true, nullable = false) // asumimos que no habrìa dos lapiceras con el mismo nombre. 
+    @Column(name="provincia_id", unique = true, nullable = false) // asumimos que no habrìa dos lapiceras con el mismo nombre. 
     private Long provincia_Id;
 
     public Persona(){

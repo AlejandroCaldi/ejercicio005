@@ -68,9 +68,9 @@ public class PersonaController {
         return personaService.buscarPorApellidoFiltrado(apellido);
     }
 
-    @GetMapping("/buscar/provincia")
-    public List<Persona> buscarPorProvincia(@RequestParam Long provinciaID) {
-        return personaService.buscarPorProvincia(provinciaID);
-    }
+    // @GetMapping("/buscar/provincia")
+    // public List<Persona> buscarPorProvincia(@RequestParam Long provinciaID) {
+    //     return personaService.buscarPorProvincia(provinciaID);
+    // }
     
 }

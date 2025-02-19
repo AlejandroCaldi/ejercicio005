@@ -11,6 +11,5 @@ public interface PersonaRepository extends JpaRepository<Persona, Long> {
     List<Persona> findByNombreContainingIgnoreCase(String nombre);
     List<Persona> findByApellido(String apellido);
     List<Persona> findByApellidoContainingIgnoreCase(String nombre);
-    List<Persona> findByProvincia(Long provincia_Id);
   
 }

@@ -54,7 +54,7 @@ public class PersonaRepositoryTest {
 
         String nombre = "Alejandro";
         Persona persona = new Persona();
-        persona.setNombre("John");
+        persona.setNombre(nombre);
         persona.setApellido("Balls");
         persona.setProvincia_Id(1l);
         repository.save(persona);

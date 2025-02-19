@@ -62,7 +62,4 @@ public class PersonaService {
         return repository.findByApellidoContainingIgnoreCase(apellido);
     }
 
-    public List<Persona> buscarPorProvincia(Long provincia_Id) {
-        return repository.findByProvincia(provincia_Id);
-    }
 }

@@ -50,7 +50,7 @@ public class ProvinciaRepositoryTest {
 
         String nombre = "Navarra";
         Provincia provincia = new Provincia();
-        provincia.setNombre("Extremadura");
+        provincia.setNombre(nombre);
         repository.save(provincia);
 
         Optional<Provincia> registro = repository.findById(provincia.getId());
