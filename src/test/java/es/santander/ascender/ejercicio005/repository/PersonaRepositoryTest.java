@@ -20,11 +20,9 @@ public class PersonaRepositoryTest {
     @Test
     public void testCreate() {
         Persona persona = new Persona();
-        persona.setNombre("La firma de un grande");
-        persona.setColor("##2587f");
-        persona.setEscribe(true);
-        
-
+        persona.setNombre("Alejandro");
+        persona.setApellido("Caldi");
+        persona.setProvincia_Id(25l);
 
         repository.save(persona);
 
@@ -39,14 +37,13 @@ public class PersonaRepositoryTest {
     public void delete() {
 
         Persona persona = new Persona();
-        persona.setColor("#0100fe");
-        persona.setEscribe(true);
-        persona.setNombre("Mi primer boli azul");
+        persona.setNombre("John");
+        persona.setApellido("Balls");
+        persona.setProvincia_Id(14l);
         repository.save(persona);
 
         assertTrue(repository.existsById(persona.getId()));
 
-        // Borrar registro y comprobar que fue borrado
         repository.deleteById(persona.getId());
 
         assertFalse(repository.existsById(persona.getId()));
@@ -55,39 +52,41 @@ public class PersonaRepositoryTest {
     @Test
     public void view() {
 
-        String color = "#2f0189";
+        String nombre = "Alejandro";
         Persona persona = new Persona();
-        persona.setColor(color);
-        persona.setEscribe(true);
-        persona.setNombre("Mi firmador de contratos");
+        persona.setNombre("John");
+        persona.setApellido("Balls");
+        persona.setProvincia_Id(1l);
         repository.save(persona);
 
         Optional<Persona> registro = repository.findById(persona.getId());
 
         assertTrue(registro.isPresent());
-        assertTrue(registro.get().getColor().equals(color));
+        assertTrue(registro.get().getNombre().equals(nombre));
     }
 
     @Test
     public void update() {
 
-        String colorOriginal = "#2f0189";
-        String colorNuevo = "#de0189";
+        String apellidoOriginal = "Caldi";
+        String apellidoNuevo = "Gomez";
         Persona persona = new Persona();
-        persona.setColor(colorOriginal);
-        persona.setEscribe(true);
-        persona.setNombre("Para cartas de amor");
+        persona.setNombre("Sebastián");
+        persona.setApellido(apellidoOriginal);
+        persona.setProvincia_Id(6l);
         repository.save(persona);
 
         assertTrue(repository.existsById(persona.getId()));
 
-        persona.setColor(colorNuevo);
+        persona.setApellido(apellidoNuevo);
         repository.save(persona);
 
         Optional<Persona> updatedPersona = repository.findById(persona.getId());
 
         assertTrue(updatedPersona.isPresent());
-        assertTrue(updatedPersona.get().getColor().equals(colorNuevo));
+        assertTrue(updatedPersona.get().getApellido().equals(apellidoNuevo));
+
+
     }
 
 }

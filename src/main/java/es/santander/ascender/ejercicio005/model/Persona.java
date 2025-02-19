@@ -22,7 +22,7 @@ public class Persona {
     @NotBlank(message= "El apellido de la persona no puede ser vacío")
     @NotNull(message="El apellido de la persona no puede ser vacío")
     @Column(name="apellido")
-    private Boolean apellido;
+    private String apellido;
 
     @NotNull(message="El id de la provincia no puede ser nulo, a ser referenciado por clave foreánea")
     @Column(name="nombre", unique = true, nullable = false) // asumimos que no habrìa dos lapiceras con el mismo nombre. 
@@ -31,7 +31,7 @@ public class Persona {
     public Persona(){
     }
 
-    public Persona(Long id, @NotBlank @NotNull String nombre, @NotBlank @NotNull Boolean apellido,
+    public Persona(Long id, @NotBlank @NotNull String nombre, @NotBlank @NotNull String apellido,
             @NotNull Long provincia_Id) {
                 
         this.id = id;
@@ -56,11 +56,11 @@ public class Persona {
         this.nombre = nombre;
     }
 
-    public Boolean getApellido() {
+    public String getApellido() {
         return apellido;
     }
 
-    public void setApellido(Boolean apellido) {
+    public void setApellido(String apellido) {
         this.apellido = apellido;
     }
 
