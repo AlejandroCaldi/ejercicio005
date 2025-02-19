@@ -4,11 +4,15 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional; 
+// Este es el unico caso en que necesitamos este import en vez del de Jakarta.
 
 import es.santander.ascender.ejercicio005.model.Persona;
 import es.santander.ascender.ejercicio005.repository.PersonaRepository;
 
+
 @Service
+@Transactional
 public class PersonaService {
 
     @Autowired
@@ -23,10 +27,12 @@ public class PersonaService {
         return repository.save(persona);
     }
 
+    @Transactional(readOnly=true)
     public Persona read(Long id) {
         return repository.findById(id).orElse(null);
     }
 
+    @Transactional(readOnly=true)
     public List<Persona> read() {
         return repository.findAll();
     }
@@ -36,7 +42,6 @@ public class PersonaService {
             throw new CrudSecurityException("Han tratado de crear un registro Persona utilizando la modifición",
                                                  CRUDOperation.UPDATE, 
                                                  null);
-            
         }
         return repository.save(persona);
     }
