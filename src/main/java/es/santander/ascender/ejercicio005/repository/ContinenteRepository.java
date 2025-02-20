@@ -9,7 +9,6 @@ import es.santander.ascender.ejercicio005.model.Continente;
 
 public interface ContinenteRepository extends JpaRepository<Continente, Long> {
         List<Continente> findByNombre(Continentes nombre);
-        List<Continente> findByNombreContainingIgnoreCase(Enum<Continentes> nombre);
 
 
 }

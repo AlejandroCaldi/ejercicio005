@@ -54,8 +54,4 @@ public class PaisService {
         return repository.findByNombre(nombre);
     }
 
-    public List<Pais> buscarPorNombreFiltro(Paises nombre) {
-        return repository.findByNombreContainingIgnoreCase(nombre);
-    }
-
 }

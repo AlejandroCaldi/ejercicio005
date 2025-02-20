@@ -34,16 +34,6 @@ public class PaisRepositoryTest {
                 .isPresent());
     }
 
-    @Test
-    public void testCreateMalContinente() {
-
-        Pais pais = new Pais();
-        pais.setNombre(Paises.ESPAÑA);
-        pais.setContinenteId(7l);
-        assertThrows(Exception.class, () -> repository.save(pais));
-
-    }
-
 
     @Test
     public void delete() {

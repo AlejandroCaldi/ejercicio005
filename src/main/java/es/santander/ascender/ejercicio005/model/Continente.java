@@ -22,8 +22,6 @@ public class Continente {
 
 
     @Enumerated(EnumType.STRING)
-    @NotNull(message = "El nombre de continente no puede ser nulo")
-    @NotBlank(message = "El nombre de continente no puede ser vacío")
     @Column(name="nombre", unique = true)
     private Continentes nombre;
 

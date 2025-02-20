@@ -54,8 +54,4 @@ public class ContinenteService {
         return repository.findByNombre(nombre);
     }
 
-    public List<Continente> buscarPorNombreFiltro(Continentes nombre) {
-        return repository.findByNombreContainingIgnoreCase(nombre);
-    }
-
 }

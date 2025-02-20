@@ -18,8 +18,6 @@ public class Pais {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    @NotBlank(message = "El nombre de la pais no puede ser vacío")
-    @NotNull(message = "El nombre de la pais no puede ser nulo")
     @Column(name="nombre", unique = true)
     private Paises nombre;
 
