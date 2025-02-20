@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import es.santander.ascender.ejercicio005.enums.Paises;
 import es.santander.ascender.ejercicio005.model.Pais;
 import es.santander.ascender.ejercicio005.service.PaisService;
 
@@ -50,7 +51,7 @@ public class PaisController {
 
 
     @GetMapping("/buscar/nombre")
-    public List<Pais> buscarPorNombre(@RequestParam String nombre) {
+    public List<Pais> buscarPorNombre(@RequestParam Paises nombre) {
         return paisService.buscarPorNombre(nombre);
     }
 

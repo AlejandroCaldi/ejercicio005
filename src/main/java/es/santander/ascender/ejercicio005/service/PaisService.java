@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import es.santander.ascender.ejercicio005.enums.Paises;
 import es.santander.ascender.ejercicio005.model.Pais;
 import es.santander.ascender.ejercicio005.repository.PaisRepository;
 
@@ -49,11 +50,11 @@ public class PaisService {
         return;
     }
 
-    public List<Pais> buscarPorNombre(String nombre) {
+    public List<Pais> buscarPorNombre(Paises nombre) {
         return repository.findByNombre(nombre);
     }
 
-    public List<Pais> buscarPorNombreFiltro(String nombre) {
+    public List<Pais> buscarPorNombreFiltro(Paises nombre) {
         return repository.findByNombreContainingIgnoreCase(nombre);
     }
 

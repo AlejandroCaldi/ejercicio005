@@ -1,7 +1,10 @@
 package es.santander.ascender.ejercicio005.model;
 
+import es.santander.ascender.ejercicio005.enums.Continentes;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -17,10 +20,12 @@ public class Continente {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotBlank(message = "El nombre de la continente no puede ser vacío")
-    @NotNull(message = "El nombre de la continente no puede ser nulo")
+
+    @Enumerated(EnumType.STRING)
+    @NotNull(message = "El nombre de continente no puede ser nulo")
+    @NotBlank(message = "El nombre de continente no puede ser vacío")
     @Column(name="nombre", unique = true)
-    private String nombre;
+    private Continentes nombre;
 
 
 
@@ -29,7 +34,7 @@ public class Continente {
     }
 
 
-    public Continente(@NotBlank @NotNull String nombre, Long continenteId) {
+    public Continente(@NotBlank @NotNull Continentes nombre, Long continenteId) {
         this.nombre = nombre;
     }
 
@@ -44,12 +49,12 @@ public class Continente {
     }
 
 
-    public String getNombre() {
+    public Continentes getNombre() {
         return nombre;
     }
 
 
-    public void setNombre(String nombre) {
+    public void setNombre(Continentes nombre) {
         this.nombre = nombre;
     }
     

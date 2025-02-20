@@ -1,7 +1,6 @@
 package es.santander.ascender.ejercicio005.repository;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Optional;
@@ -10,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import es.santander.ascender.ejercicio005.enums.Continentes;
 import es.santander.ascender.ejercicio005.model.Continente;
 
 @SpringBootTest
@@ -23,7 +23,7 @@ public class ContinenteRepositoryTest {
     public void testCreate() {
 
         Continente continente = new Continente();
-        continente.setNombre("América");
+        continente.setNombre(Continentes.EUROPA);
         repository.save(continente);
 
         assertTrue(
@@ -32,22 +32,12 @@ public class ContinenteRepositoryTest {
                 .isPresent());
     }
 
-    @Test
-    public void testCreateMalContinente() {
-
-        Continente continente = new Continente();
-        continente.setNombre("Europa");
-        continente.setId(7l);
-        assertThrows(Exception.class, () -> repository.save(continente));
-
-    }
-
 
     @Test
     public void delete() {
 
         Continente continente = new Continente();
-        continente.setNombre("Asia");
+        continente.setNombre(Continentes.AMERICA);
         repository.save(continente);
 
         assertTrue(repository.existsById(continente.getId()));
@@ -60,7 +50,7 @@ public class ContinenteRepositoryTest {
     @Test
     public void view() {
 
-        String nombre = "Oceanía";
+        Continentes nombre = Continentes.OCEANIA;
         Continente continente = new Continente();
         continente.setNombre(nombre);
         repository.save(continente);
@@ -74,9 +64,9 @@ public class ContinenteRepositoryTest {
     @Test
     public void update() {
 
-        String continenteNuevo = "Asia";
+        Continentes continenteNuevo = Continentes.ANTARTIDA;
         Continente continente = new Continente();
-        continente.setNombre("Antartida");
+        continente.setNombre(continenteNuevo);
         repository.save(continente);
 
         assertTrue(repository.existsById(continente.getId()));

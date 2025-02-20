@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import es.santander.ascender.ejercicio005.enums.Continentes;
 import es.santander.ascender.ejercicio005.model.Continente;
 import es.santander.ascender.ejercicio005.repository.ContinenteRepository;
 
@@ -49,11 +50,11 @@ public class ContinenteService {
         return;
     }
 
-    public List<Continente> buscarPorNombre(String nombre) {
+    public List<Continente> buscarPorNombre(Continentes nombre) {
         return repository.findByNombre(nombre);
     }
 
-    public List<Continente> buscarPorNombreFiltro(String nombre) {
+    public List<Continente> buscarPorNombreFiltro(Continentes nombre) {
         return repository.findByNombreContainingIgnoreCase(nombre);
     }
 

@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import es.santander.ascender.ejercicio005.enums.Paises;
 import es.santander.ascender.ejercicio005.model.Pais;
 
 @SpringBootTest
@@ -23,8 +24,8 @@ public class PaisRepositoryTest {
     public void testCreate() {
 
         Pais pais = new Pais();
-        pais.setNombre("España");
-        pais.setContinenteId((short) 3);
+        pais.setNombre(Paises.ARGENTINA);
+        pais.setContinenteId( 3l);
         repository.save(pais);
 
         assertTrue(
@@ -37,8 +38,8 @@ public class PaisRepositoryTest {
     public void testCreateMalContinente() {
 
         Pais pais = new Pais();
-        pais.setNombre("España");
-        pais.setContinenteId((short) 7);
+        pais.setNombre(Paises.ESPAÑA);
+        pais.setContinenteId(7l);
         assertThrows(Exception.class, () -> repository.save(pais));
 
     }
@@ -48,8 +49,8 @@ public class PaisRepositoryTest {
     public void delete() {
 
         Pais pais = new Pais();
-        pais.setNombre("Argentina");
-        pais.setContinenteId((short) 2);
+        pais.setNombre(Paises.TURKMENISTAN);
+        pais.setContinenteId(2l);
         repository.save(pais);
 
         assertTrue(repository.existsById(pais.getId()));
@@ -62,10 +63,10 @@ public class PaisRepositoryTest {
     @Test
     public void view() {
 
-        String nombre = "Tailandia";
+        Paises nombre = Paises.TAILANDIA;
         Pais pais = new Pais();
         pais.setNombre(nombre);
-        pais.setContinenteId((short) 1);
+        pais.setContinenteId(1l);
         repository.save(pais);
 
         Optional<Pais> registro = repository.findById(pais.getId());
@@ -77,10 +78,10 @@ public class PaisRepositoryTest {
     @Test
     public void update() {
 
-        String paisNuevo = "Australia";
+        Paises paisNuevo = Paises.AUSTRALIA;
         Pais pais = new Pais();
-        pais.setNombre("Nueva Zelanda");
-        pais.setContinenteId((short) 3);
+        pais.setNombre(Paises.AUSTRIA);
+        pais.setContinenteId((long) 3);
         repository.save(pais);
 
         assertTrue(repository.existsById(pais.getId()));
