@@ -1,4 +1,4 @@
-package es.santander.ascender.ejercicio005.service;
+package es.santander.ascender.ejercicio005.enums;
 
 public enum CRUDOperation {
     CREATE, READ, UPDATE, DELETE;

@@ -17,13 +17,17 @@ public class PersonaRepositoryTest {
     @Autowired
     private PersonaRepository repository;
 
+    private Persona getPersona(String nombre, String apellido, Long provincia_Id) {
+        Persona persona = new Persona();
+        persona.setNombre(nombre);
+        persona.setApellido(apellido);
+        persona.setProvincia_Id(provincia_Id);
+        return persona;
+    }
+
     @Test
     public void testCreate() {
-        Persona persona = new Persona();
-        persona.setNombre("Alejandro");
-        persona.setApellido("Caldi");
-        persona.setProvincia_Id(25l);
-
+        Persona persona = getPersona("Alejandro","Caldi", 3l);
         repository.save(persona);
 
         assertTrue(
@@ -32,14 +36,10 @@ public class PersonaRepositoryTest {
                 .isPresent());
     }
 
-
     @Test
     public void delete() {
 
-        Persona persona = new Persona();
-        persona.setNombre("John");
-        persona.setApellido("Balls");
-        persona.setProvincia_Id(14l);
+        Persona persona = new Persona("John","Balls",14l);
         repository.save(persona);
 
         assertTrue(repository.existsById(persona.getId()));
@@ -53,10 +53,7 @@ public class PersonaRepositoryTest {
     public void view() {
 
         String nombre = "John";
-        Persona persona = new Persona();
-        persona.setNombre(nombre);
-        persona.setApellido("Balls");
-        persona.setProvincia_Id(1l);
+        Persona persona = new Persona(nombre, "Balls", 11l);
         repository.save(persona);
 
         Optional<Persona> registro = repository.findById(persona.getId());
@@ -70,10 +67,7 @@ public class PersonaRepositoryTest {
 
         String apellidoOriginal = "Pelotas";
         String apellidoNuevo = "Gomez";
-        Persona persona = new Persona();
-        persona.setNombre("Sebastián");
-        persona.setApellido(apellidoOriginal);
-        persona.setProvincia_Id(6l);
+        Persona persona = new Persona("Sebastián",apellidoOriginal, 6l);
         repository.save(persona);
 
         assertTrue(repository.existsById(persona.getId()));

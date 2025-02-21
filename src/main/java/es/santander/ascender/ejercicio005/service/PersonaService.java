@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional; 
 // Este es el unico caso en que necesitamos este import en vez del de Jakarta.
 
+import es.santander.ascender.ejercicio005.enums.CRUDOperation;
 import es.santander.ascender.ejercicio005.model.Persona;
 import es.santander.ascender.ejercicio005.repository.PersonaRepository;
 

@@ -1,5 +1,7 @@
 package es.santander.ascender.ejercicio005.service;
 
+import es.santander.ascender.ejercicio005.enums.CRUDOperation;
+
 public class CrudSecurityException extends RuntimeException {
     private final CRUDOperation operation;
     private final Long id;

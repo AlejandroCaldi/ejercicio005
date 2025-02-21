@@ -19,11 +19,17 @@ public class ContinenteRepositoryTest {
     private ContinenteRepository repository;
 
 
+    private Continente getContinente(Continentes continent) {
+        Continente continente = new Continente();
+        continente.setNombre(continent);
+        return continente;
+    }
+
+
     @Test
     public void testCreate() {
 
-        Continente continente = new Continente();
-        continente.setNombre(Continentes.EUROPA);
+        Continente continente = getContinente(Continentes.EUROPA);
         repository.save(continente);
 
         assertTrue(
@@ -32,12 +38,10 @@ public class ContinenteRepositoryTest {
                 .isPresent());
     }
 
-
     @Test
     public void delete() {
 
-        Continente continente = new Continente();
-        continente.setNombre(Continentes.AMERICA);
+        Continente continente = getContinente(Continentes.AMERICA);
         repository.save(continente);
 
         assertTrue(repository.existsById(continente.getId()));
@@ -51,8 +55,7 @@ public class ContinenteRepositoryTest {
     public void view() {
 
         Continentes nombre = Continentes.OCEANIA;
-        Continente continente = new Continente();
-        continente.setNombre(nombre);
+        Continente continente = getContinente(nombre);
         repository.save(continente);
 
         Optional<Continente> registro = repository.findById(continente.getId());
@@ -65,8 +68,7 @@ public class ContinenteRepositoryTest {
     public void update() {
 
         Continentes continenteNuevo = Continentes.ANTARTIDA;
-        Continente continente = new Continente();
-        continente.setNombre(continenteNuevo);
+        Continente continente = getContinente(continenteNuevo);
         repository.save(continente);
 
         assertTrue(repository.existsById(continente.getId()));

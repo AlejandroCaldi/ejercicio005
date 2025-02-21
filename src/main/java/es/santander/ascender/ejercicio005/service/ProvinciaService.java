@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import es.santander.ascender.ejercicio005.enums.CRUDOperation;
 import es.santander.ascender.ejercicio005.model.Provincia;
 import es.santander.ascender.ejercicio005.repository.ProvinciaRepository;
 

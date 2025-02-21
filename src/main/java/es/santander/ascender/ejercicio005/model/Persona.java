@@ -71,8 +71,4 @@ public class Persona {
         this.provincia_Id = provincia_Id;
     }
 
-    
-    
-    
-    
 }

@@ -17,13 +17,17 @@ public class ProvinciaRepositoryTest {
     @Autowired
     private ProvinciaRepository repository;
 
+    private Provincia getProvincia(String nombre, Long paisId) {
+        Provincia provincia = new Provincia();
+        provincia.setNombre(nombre);
+        provincia.setPaisId(paisId);
+        return provincia;
 
+    }
     @Test
     public void testCreate() {
 
-        Provincia provincia = new Provincia();
-        provincia.setNombre("Cantabria");
-        provincia.setPaisId(1l);
+        Provincia provincia = getProvincia("Cantabeia", 5l);
         repository.save(provincia);
 
         assertTrue(
@@ -33,12 +37,13 @@ public class ProvinciaRepositoryTest {
     }
 
 
+   
+
+
     @Test
     public void delete() {
 
-        Provincia provincia = new Provincia();
-        provincia.setNombre("Barcelona");
-        provincia.setPaisId(2l);
+        Provincia provincia = new Provincia("Barcelona",2l);
         repository.save(provincia);
 
         assertTrue(repository.existsById(provincia.getId()));
@@ -52,9 +57,7 @@ public class ProvinciaRepositoryTest {
     public void view() {
 
         String nombre = "Navarra";
-        Provincia provincia = new Provincia();
-        provincia.setNombre(nombre);
-        provincia.setPaisId(1l);
+        Provincia provincia = new Provincia(nombre, 1l);
         repository.save(provincia);
 
         Optional<Provincia> registro = repository.findById(provincia.getId());
@@ -67,9 +70,7 @@ public class ProvinciaRepositoryTest {
     public void update() {
 
         String provinciaNuevo = "Asturias";
-        Provincia provincia = new Provincia();
-        provincia.setNombre("Canarias");
-        provincia.setPaisId(2l);
+        Provincia provincia = new Provincia("Islas Canarias", 2l);
         repository.save(provincia);
 
         assertTrue(repository.existsById(provincia.getId()));
