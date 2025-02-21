@@ -19,21 +19,18 @@ import jakarta.validation.constraints.NotNull;
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotBlank(message = "El nombre de documento no puede ser vacío")
-    @NotNull(message = "El nombre del documento no puede ser nulo")
+    @NotNull()
+    @NotBlank()
     @Length(max = 256)
-    @Length(min = 1)
     @Column(name="nombre")
     private String nombre; 
 
-    @NotBlank(message = "El nombre de la persona no puede ser vacío")
-    @NotNull(message = "El nombre de la persona no puede ser nulo")
+    @NotNull()
     @Length(max = 15)
-    @Length(min = 0)
     @Column(name="extension")
     private String extension; 
 
-    @NotNull(message="El id de dueño no puede ser vacío")
+    @NotNull()
     @Column(name="duenoId")
     private Long duenoId;
 
@@ -48,16 +45,12 @@ import jakarta.validation.constraints.NotNull;
 
     }
 
-    public Documento(Long id,
-            @NotBlank(message = "El nombre de documento no puede ser vacío") @NotNull(message = "El nombre del documento no puede ser nulo") @Length(max = 256) @Length(min = 1) String nombre,
-            @NotBlank(message = "El nombre de la persona no puede ser vacío") @NotNull(message = "El nombre de la persona no puede ser nulo") @Length(max = 15) @Length(min = 0) String extension,
-            @NotBlank(message = "El apellido de la persona no puede ser vacío") @NotNull(message = "El apellido de la persona no puede ser vacío") Long duenoId,
-            @NotNull(message = "Es preciso informar una fecha") LocalDate fechaCreacion, Boolean borrado) {
+    public Documento(Long id, @NotNull @NotBlank @Length(max = 256) String nombre,
+            @NotNull @Length(max = 15) String extension, @NotNull Long duenoId, Boolean borrado) {
         this.id = id;
         this.nombre = nombre;
         this.extension = extension;
         this.duenoId = duenoId;
-        this.fechaCreacion = fechaCreacion;
         this.borrado = borrado;
     }
 
